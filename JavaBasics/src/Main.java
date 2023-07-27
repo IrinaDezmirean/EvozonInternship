@@ -1,4 +1,4 @@
-// Assignment 2
+// Assignment 3
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +20,11 @@ public class Main
         //4. Printati rezultatul urmatoarelor operatiuni:
         computations();
 
-        System.out.println("Addition: " + add(10,28));
-        System.out.println("Subtraction: " + subtract(10,28));
-        System.out.println("Multiplication: " + multiply(10,28));
-        System.out.println("Division: " + divide(10,28));
+        Calculator calc = new Calculator();
+        System.out.println("Addition: " + calc.add(10,28));
+        System.out.println("Subtraction: " + calc.subtract(10,28));
+        System.out.println("Multiplication: " + calc.multiply(10,28));
+        System.out.println("Division: " + calc.divide(10,28));
 
         drawMonkey();
 
@@ -39,6 +40,42 @@ public class Main
         computeSpeed(200,2,106,18);
 
         computeCircleAreaAndCircumference(10);
+
+
+        LogicalOp op = new LogicalOp();
+        int max = op.checkBiggerNumber(100,30);
+        System.out.println("Bigger number is: "+ max);
+
+
+        System.out.println(op.stringComparison("Evozon"));
+
+
+        System.out.println(op.compStrAndNo("Evozon",2));
+        System.out.println(op.compStrAndNo("Evozon",5));
+        System.out.println(op.compStrAndNo("Alabala",1));
+
+        System.out.println(op.compNo(10));
+        System.out.println(op.compNo(6));
+        System.out.println(op.compNo(3));
+
+        System.out.println(op.compareNumber(-10));
+        System.out.println(op.compareNumber(10));
+        System.out.println(op.compareNumber(4));
+        System.out.println(op.compareNumber(3));
+
+
+        op.switchCaseLuckyNo(-100);
+        op.switchCaseLuckyNo(7);
+
+        System.out.println(op.evenNumber(10));
+        System.out.println(op.evenNumber(3));
+
+        System.out.println(op.eligibleVote(22));
+        System.out.println(op.eligibleVote(6));
+
+        System.out.println(op.max3No(10,200,8));
+        System.out.println(op.max3No(50,20,90));
+        System.out.println(op.max3No(43,2,31));
     }
 
     public static void printHelloName()
@@ -96,28 +133,6 @@ public class Main
 
     }
 
-    //2. Scrieti care o metoda java pentru fiecare din urmatoarele
-    // operatii matematice: adunare, scadere, inmultire, impartire.
-
-    public static float add(float a, float b)
-    {
-        return a + b;
-    }
-
-    public static float subtract(float a, float b)
-    {
-        return a - b;
-    }
-
-    public static float multiply(float a, float b)
-    {
-        return a * b;
-    }
-
-    public static float divide(float a, float b)
-    {
-        return a / b;
-    }
 
     //3.Scrieti o metoda java, care sa afiseze urmatorul model:
 //    +"""""+
