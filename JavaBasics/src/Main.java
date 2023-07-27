@@ -3,11 +3,13 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main
 {
     public static void main(String[] args)
     {
+        /*
         // 1. Printati "Hello" in consola, iar pe rand nou, printati numele vostru.
         printHelloName();
 
@@ -102,6 +104,76 @@ public class Main
 
 
         op.drawModel();
+
+         */
+
+        LogicalOp op = new LogicalOp();
+        Calculator calc = new Calculator();
+
+        System.out.println("Overloading add method");
+        System.out.println(calc.add(10,10));
+        System.out.println(calc.add(10.5F,10.5F));
+        System.out.println(calc.add(10,10,10));
+        System.out.println(calc.add(10.5F,10.5F,10.5F));
+
+        System.out.println("Overloading subtract method");
+        System.out.println(calc.subtract(99.99F,16.03F,56.77F));
+        System.out.println(calc.subtract(99,16,56));
+        System.out.println(calc.subtract(99.99F,16.03F));
+        System.out.println(calc.subtract(99,16));
+
+        System.out.println("Overloading multiply method");
+        System.out.println(calc.multiply(0,89));
+        System.out.println(calc.multiply(2.5F,10.0F));
+        System.out.println(calc.multiply(1,89,2));
+        System.out.println(calc.multiply(2.5F,10.0F,2.7F));
+
+        System.out.println("Overloading divide method");
+        System.out.println(calc.divide(6,3));
+        System.out.println(calc.divide(2.5F,10.0F));
+        System.out.println(calc.divide(5,3,7));
+        System.out.println(calc.divide(2.5F,10.0F,2.7F));
+
+        op.arrayPos();
+
+        int[] res = op.populateArr(new int[50]);
+        for(int i = 0; i < res.length; i++)
+            System.out.println(i+": "+res[i]);
+
+
+        int[] arr = new int[10];
+        Random rand = new Random();
+        for(int i = 0; i < arr.length; i++)
+        {
+            arr[i] = rand.nextInt(1000);
+            //System.out.println(i+": "+arr[i]);
+        }
+        System.out.println("Array mean: "+op.meanArray(arr));
+
+        String[] str = {"bird","cat","dog","fish","lion"};
+        System.out.println(op.findString(str,"dog"));
+        System.out.println(op.findString(str,"turtle"));
+
+
+        int[] nrs = {10,99,0,28,38,239,1,203,38,29};
+        System.out.println(op.findNr(nrs,203));
+        System.out.println(op.findNr(nrs,50));
+
+        op.drawGrid();
+
+        int[] arrRem = op.removeEl(nrs,38);
+        for(int v: arrRem)
+            System.out.println(v);
+
+        System.out.println("Second smallest min: " + op.secondSmallestNr(nrs));
+
+        int[] copy = new int[10];
+        copy = op.copyArr(nrs,copy);
+        for (int v: copy)
+            System.out.println(v);
+
+
+
     }
 
     public static void printHelloName()

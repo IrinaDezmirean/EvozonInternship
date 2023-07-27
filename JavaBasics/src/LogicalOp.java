@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class LogicalOp
 {
 
@@ -185,6 +187,98 @@ public class LogicalOp
             System.out.println();
             limit++;
         }
+    }
+
+
+    public void arrayPos()
+    {
+        int[] arr = new int[100];
+        for(int i = 0; i < 100; i++)
+        {
+            arr[i] = i + 1;
+            System.out.println(i+": "+arr[i]);
+        }
+    }
+
+
+    public int[] populateArr(int[] arr)
+    {
+        for(int i = 0 ; i < arr.length; i++)
+            arr[i] = (i+1)*2;
+        return arr;
+    }
+
+
+    public float meanArray(int[] arr)
+    {
+        int sum = 0;
+        for(int i = 0; i < arr.length; i++)
+            sum += arr[i];
+        return (float)sum / arr.length;
+    }
+
+
+    public boolean findString(String[] arr, String value)
+    {
+        for(int i = 0; i < arr.length; i++)
+            if(arr[i].equals(value))
+                return true;
+        return false;
+    }
+
+    public int findNr(int[] arr, int value)
+    {
+        for(int i = 0; i < arr.length; i++)
+            if(arr[i] == value)
+                return i+1;
+        return -1;
+    }
+
+    public void drawGrid()
+    {
+        char[] arr = new char[10];
+        Arrays.fill(arr, '-');
+        for(int i = 0; i < 10; i++)
+            System.out.println(arr);
+    }
+
+    public int[] removeEl(int[] arr, int val)
+    {
+        for(int i = 0; i < arr.length; i++)
+        {
+            if(arr[i] == val)
+            {
+                for (int j = i; j < arr.length - 1; j++)
+                    arr[j] = arr[j + 1];
+            }
+
+        }
+        return arr;
+    }
+
+    public int secondSmallestNr(int[] arr)
+    {
+        int min1 = arr[0];
+        int min2 = arr[0];
+        for(int v: arr)
+        {
+            if( v < min1 && v < min2)
+            {
+                int aux = min1;
+                min1 = v;
+                min2 = aux;
+            }
+            if( v < min2 && v > min1)
+                min2 = v;
+        }
+        return min2;
+    }
+
+    public int[] copyArr(int[] orig, int[] copy)
+    {
+        for(int i = 0; i < orig.length; i++)
+            copy[i] = orig[i];
+        return copy;
     }
 
 }
