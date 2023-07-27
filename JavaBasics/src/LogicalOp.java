@@ -1,4 +1,7 @@
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class LogicalOp
 {
@@ -279,6 +282,69 @@ public class LogicalOp
         for(int i = 0; i < orig.length; i++)
             copy[i] = orig[i];
         return copy;
+    }
+
+
+    public void displayList(List<String> animals)
+    {
+        for(String animal: animals)
+            System.out.println(animal);
+    }
+
+    public List<Integer> addToList(List<Integer> ints, int val)
+    {
+        ints.add(val);
+        return ints;
+    }
+
+    public void displayInterval(List<Integer> ints, int val)
+    {
+        int index = ints.lastIndexOf(val);
+        for(int i = index; i < ints.size(); i++)
+            System.out.println(ints.get(i));
+
+    }
+
+    public void displayReverse(List<String> animals)
+    {
+        Collections.reverse(animals);
+        for(String animal: animals)
+            System.out.println(animal);
+    }
+
+
+    public List<String> addElemAtPos(List<String> animals, int pos, String animal)
+    {
+        animals.add(pos-1,animal);
+        return animals;
+    }
+
+    public List<String> addFirst(List<String> animals, String animal)
+    {
+        animals.add(0,animal);
+        return animals;
+    }
+
+    public void displayPosAndValue(List<String> animals)
+    {
+        int counter = 1;
+        for(String animal: animals)
+        {
+            System.out.println("On position " + counter + ", the values is: " + animal);
+            counter++;
+        }
+
+    }
+
+
+    public int max(List<Integer> ints)
+    {
+        int max = ints.get(0);
+        for(Integer i: ints)
+            if(i > max)
+                max = i;
+
+        return max;
     }
 
 }

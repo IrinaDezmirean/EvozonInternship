@@ -1,9 +1,6 @@
 // Assignment 3
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Random;
+import java.util.*;
 
 public class Main
 {
@@ -107,7 +104,7 @@ public class Main
 
          */
 
-        LogicalOp op = new LogicalOp();
+        /*LogicalOp op = new LogicalOp();
         Calculator calc = new Calculator();
 
         System.out.println("Overloading add method");
@@ -170,8 +167,35 @@ public class Main
         int[] copy = new int[10];
         copy = op.copyArr(nrs,copy);
         for (int v: copy)
-            System.out.println(v);
+            System.out.println(v);*/
 
+        LogicalOp op = new LogicalOp();
+
+        List<String> animals = new ArrayList<>(Arrays.asList("dog","bird","frog","turtle","cat","whale"));
+        op.displayList(animals);
+
+        List<Integer> ints = new ArrayList<>(Arrays.asList(1,2,3,4,45,23,2,4,6,2,22));
+        int val = 1000;
+        ints = op.addToList(ints,val);
+        for(Integer i: ints)
+            System.out.println(i);
+
+        op.displayInterval(ints,45);
+
+        op.displayReverse(animals);
+
+        animals = op.addElemAtPos(animals,3,"wolf");
+        for(String animal: animals)
+            System.out.println(animal);
+
+
+        animals = op.addFirst(animals, "fox");
+        for(String animal: animals)
+            System.out.println(animal);
+
+        op.displayPosAndValue(animals);
+
+        System.out.println("Max is: "+op.max(ints));
 
 
     }
