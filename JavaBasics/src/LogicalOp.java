@@ -113,4 +113,78 @@ public class LogicalOp
             return c;
     }
 
+    public void counterAsc(int x)
+    {
+        if(x>100)
+            System.out.println("The given number is greater than 100");
+        else
+            for(int i = x; i<=100; i++)
+                System.out.println(i);
+    }
+
+    public void counterDesc(int x)
+    {
+        if(x<-100)
+            System.out.println("The given number is smaller than -100");
+        else
+            for(int i = x; i>=-100; i--)
+                System.out.println(i);
+    }
+
+
+    public void interval(int x, int y)
+    {
+        if(x<=y)
+            for(int i = x; i <= y; i++)
+                System.out.println(i);
+        else
+            for(int i = x; i >= y; i--)
+                System.out.println(i);
+    }
+
+
+    public void counterEven()
+    {
+        for(int i = 2; i <= 100; i=i+2)
+            System.out.println(i);
+    }
+
+    public void counterOdd()
+    {
+        for(int i = 1; i <= 99; i=i+2)
+            System.out.println(i);
+    }
+
+
+    public int addNumbers(int x)
+    {
+        int sum = 0;
+        if (x>100)
+            System.out.println("Given number is bigger than 100");
+        else
+            for(int i = x; i <= 100; i++)
+                sum += i;
+
+        return sum;
+    }
+
+
+    public int meanNumbers(int x)
+    {
+        int sum = addNumbers(x);
+        return sum / (100 - x + 1);
+    }
+
+    public void drawModel()
+    {
+        int limit = 0;
+        for(int i = 0; i < 7; i++)
+        {
+            for(int j = 7; j > limit; j--)
+                System.out.print("*");
+            System.out.println();
+            limit++;
+        }
+    }
+
 }

@@ -12,10 +12,10 @@ public class Main
         printHelloName();
 
         //2. Printati rezultatul sumei a doua numere(orice numere)
-        printSum2No();
+        //printSum2No();
 
         //3. Printati rezultatul impartirii a doua numere. Atentie, daca numarul nu este intreg, sa afiseze si valorile dupa virgula.
-        printDiv2No();
+        //printDiv2No();
 
         //4. Printati rezultatul urmatoarelor operatiuni:
         computations();
@@ -76,6 +76,32 @@ public class Main
         System.out.println(op.max3No(10,200,8));
         System.out.println(op.max3No(50,20,90));
         System.out.println(op.max3No(43,2,31));
+
+
+        op.counterAsc(73);
+        op.counterAsc(105);
+
+        op.counterDesc(-73);
+        op.counterDesc(-105);
+
+        op.interval(7,16);
+        op.interval(20,8);
+        op.interval(19,19);
+
+
+        op.counterEven();
+
+        op.counterOdd();
+
+
+        System.out.println(op.addNumbers(90));
+        System.out.println(op.addNumbers(109));
+
+        System.out.println(op.meanNumbers(90));
+        System.out.println(op.meanNumbers(109));
+
+
+        op.drawModel();
     }
 
     public static void printHelloName()
