@@ -1,8 +1,8 @@
-package Model;
+package Model.Food;
 
 import java.util.Date;
 
-public class AnimalFood
+public abstract class AnimalFood
 {
     private String name;
 
@@ -13,6 +13,8 @@ public class AnimalFood
     private Date expirationDate;
 
     private int stock;
+
+    public AnimalFood(){}
 
     public AnimalFood(String name, double price, int quantity, Date expirationDate, int stock)
     {

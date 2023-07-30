@@ -1,12 +1,18 @@
 package Model;
 
+import Model.Animals.Animal;
+import Model.Animals.Dog;
+import Model.Food.DogFood;
+import Model.People.Adopter;
+import Model.People.VetMed;
+
 public class Play
 {
     private Adopter adopter;
-    private Animal dog;
+    private Dog dog;
     private VetMed veterinarian;
 
-    public Play(Adopter adopter, Animal dog, VetMed veterinarian)
+    public Play(Adopter adopter, Dog dog, VetMed veterinarian)
     {
         this.adopter = adopter;
         this.dog = dog;
@@ -28,7 +34,7 @@ public class Play
         return dog;
     }
 
-    public void setDog(Animal dog)
+    public void setDog(Dog dog)
     {
         this.dog = dog;
     }
@@ -42,6 +48,75 @@ public class Play
     {
         this.veterinarian = veterinarian;
     }
+
+    public void goToShelter()
+    {
+        System.out.println("One day," + adopter.toString() + " " + adopter.goToShelter() + " with her dad to " + adopter.adopt() + ".");
+    }
+
+    public void fallInLove()
+    {
+        System.out.println(this.adopter.fallInLove() + "a " + this.dog.getBreed() + ".");
+    }
+
+    public void animalCondition()
+    {
+        System.out.println(this.dog+".");
+    }
+
+    public void nameAnimal()
+    {
+        System.out.println(this.adopter.getName() + " adopted the " + this.dog.getBreed() + " and "+ this.adopter.namedAnimal() + this.dog.getName()+".");
+    }
+
+    public void feedAnimal()
+    {
+        DogFood df = new DogFood("normal","beef","puppies");
+        this.dog.setPreferredFood(df);
+        System.out.print(this.adopter.getName() + " fed " + this.dog.getName() +" " + this.dog.getPreferredFood());
+
+        String pov = "The dog ";
+        for(int i = 0 ; i < 5; i++)
+        {
+            pov += this.dog.eat(df) + " and ";
+        }
+        pov += " after a while the ";
+        System.out.print(pov);
+    }
+    public void goToVet()
+    {
+        System.out.println(this.adopter.goToVet(this.dog) + " and the" + this.veterinarian.vaccineAndDeworm(this.dog));
+        System.out.println(this.veterinarian.getNurse().comfort(this.dog));
+    }
+
+    public void gainWeight()
+    {
+        DogFood df = new DogFood("wet", "beef", "adult");
+        this.dog.setPreferredFood(df);
+        this.dog.eat(df);
+        this.dog.eat(df);
+        System.out.print(this.adopter.getName() + " continued to feed " + this.dog.getName() +" " + this.dog.getPreferredFood() + "and he gained weight.");
+    }
+
+    public void putOnDiet()
+    {
+        DogFood df = new DogFood("wet", "beef", "adult");
+        df.setType("diet");
+        this.dog.setPreferredFood(df);
+        this.dog.eat(df);
+        this.dog.eat(df);
+        System.out.println(this.adopter.putOnDiet(this.dog)+".");
+    }
+
+    public void dailyRoutine()
+    {
+        System.out.println(this.adopter.getName() + " made a daily routine for the dog: ");
+        System.out.print("1. After waking up "+ this.adopter.feed(this.dog) + " with " + dog.getPreferredFood());
+        System.out.println("2. " + this.adopter.walkAnimal(this.dog));
+        System.out.println("3. Returning back, "  + this.adopter.doHomework() + " and " + this.dog.sleep());
+
+    }
+
 
     @Override
     public String toString()

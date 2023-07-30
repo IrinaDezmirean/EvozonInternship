@@ -1,6 +1,8 @@
-package Model;
+package Model.Food;
 
-public class DogFood
+import java.util.Date;
+
+public class DogFood extends AnimalFood
 {
 
     private String type; // normal or dietetic
@@ -9,6 +11,14 @@ public class DogFood
 
     public DogFood(String type, String meat, String suitableFor)
     {
+        this.type = type;
+        this.meat = meat;
+        this.suitableFor = suitableFor;
+    }
+
+    public DogFood(String name, double price, int quantity, Date expirationDate, int stock, String type, String meat, String suitableFor)
+    {
+        super(name, price, quantity, expirationDate, stock);
         this.type = type;
         this.meat = meat;
         this.suitableFor = suitableFor;

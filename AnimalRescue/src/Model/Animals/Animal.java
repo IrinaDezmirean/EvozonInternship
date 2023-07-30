@@ -1,26 +1,30 @@
-package Model;
+package Model.Animals;
 
-public class Animal
+import Model.Food.AnimalFood;
+
+public abstract class Animal
 {
     private String name;
     private int age;
     private int healthLevel;
     private int hungerLevel;
     private int moodLevel;
-    private String preferredFood;
+
+    private int weight;
+    private AnimalFood foodType;
     private String preferredActivity;
 
 
     public Animal(){}
 
-    public Animal(String name, int age, int healthLevel, int hungerLevel,int moodLevel, String preferredFood, String preferredActivity)
+    public Animal(String name, int age, int healthLevel, int hungerLevel,int moodLevel, AnimalFood preferredFood, String preferredActivity)
     {
         this.name = name;
         this.age = age;
         this.healthLevel = healthLevel;
         this.hungerLevel = hungerLevel;
         this.moodLevel = moodLevel;
-        this.preferredFood = preferredFood;
+        this.foodType = preferredFood;
         this.preferredActivity = preferredActivity;
     }
 
@@ -74,14 +78,14 @@ public class Animal
         this.moodLevel = moodLevel;
     }
 
-    public String getPreferredFood()
+    public AnimalFood getPreferredFood()
     {
-        return preferredFood;
+        return foodType;
     }
 
-    public void setPreferredFood(String preferredFood)
+    public void setPreferredFood(AnimalFood preferredFood)
     {
-        this.preferredFood = preferredFood;
+        this.foodType = preferredFood;
     }
 
     public String getPreferredActivity()
@@ -92,6 +96,35 @@ public class Animal
     public void setPreferredActivity(String preferredActivity)
     {
         this.preferredActivity = preferredActivity;
+    }
+
+    public void eat()
+    {
+        System.out.println("I eat animal food\n");
+    }
+
+    public abstract  void speak();
+
+    public abstract String sleep();
+
+    public int getWeight()
+    {
+        return weight;
+    }
+
+    public void setWeight(int weight)
+    {
+        this.weight = weight;
+    }
+
+    public void gainWeight()
+    {
+        this.weight += 2;
+    }
+
+    public void loseWight()
+    {
+        this.weight -= 2;
     }
 
     @Override
