@@ -110,11 +110,19 @@ public class Play
 
     public void dailyRoutine()
     {
-        System.out.println(this.adopter.getName() + " made a daily routine for the dog: ");
-        System.out.print("1. After waking up "+ this.adopter.feed(this.dog) + " with " + dog.getPreferredFood());
-        System.out.println("2. " + this.adopter.walkAnimal(this.dog));
-        System.out.println("3. Returning back, "  + this.adopter.doHomework() + " and " + this.dog.sleep());
+        System.out.print(this.adopter.getName() + " made a daily routine for the dog: ");
+        System.out.print("After waking up "+ this.adopter.feed(this.dog) + " with " + dog.getPreferredFood());
+        System.out.print(this.adopter.walkAnimal(this.dog));
+        System.out.print("Returning back, "  + this.adopter.doHomework() + " and " + this.dog.sleep()+ ". ");
+        this.dog.setPreferredActivity("played with the ball in the garden");
+        System.out.println(this.adopter.getName() + " and the dog " +  this.dog.getPreferredActivity());
+        System.out.print("In the evening, "  + this.adopter.walkAnimal(this.dog));
+        System.out.println(" After that, " + this.dog.getName() + " ate again and went to sleep");
+    }
 
+    public void theEnd()
+    {
+        System.out.println("With this routine, the dog kept its wight in control");
     }
 
 

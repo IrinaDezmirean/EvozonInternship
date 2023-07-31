@@ -46,6 +46,7 @@ public class Main
         play.gainWeight();
         play.putOnDiet();
         play.dailyRoutine();
+        play.theEnd();
 
 
     }
