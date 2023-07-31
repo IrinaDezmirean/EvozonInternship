@@ -1,18 +1,10 @@
 import Model.*;
-import Model.Activities.LeisureActivity;
 import Model.Animals.Dog;
-import Model.Animals.Husky;
 import Model.Animals.Labrador;
 import Model.People.Adopter;
-import Model.Food.AnimalFood;
 import Model.People.Nurse;
-import Model.People.Person;
 import Model.People.VetMed;
 
-import java.util.*;
-
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main
 {
     public static void main(String[] args)
@@ -20,11 +12,8 @@ public class Main
         Adopter littleGirl = new Adopter("Ana", "girl", null, 7, 0,"little","red");
         littleGirl.setWhatAnimalLove("animal lover");
 
-//        Husky husky = new Husky(-20,"summer");
-//        husky.setName("Grivei");
-//        husky.setPreferredFood("Meat balls");
 
-        Dog labrador = new Labrador("Disabled children",10);
+        Labrador labrador = new Labrador("Disabled children",10);
         labrador.setMoodLevel(1);
         labrador.setHealthLevel(1);
         labrador.setHungerLevel(1);

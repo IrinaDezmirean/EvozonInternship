@@ -2,6 +2,7 @@ package Model;
 
 import Model.Animals.Animal;
 import Model.Animals.Dog;
+import Model.Animals.Labrador;
 import Model.Food.DogFood;
 import Model.People.Adopter;
 import Model.People.VetMed;
@@ -9,10 +10,10 @@ import Model.People.VetMed;
 public class Play
 {
     private Adopter adopter;
-    private Dog dog;
+    private Labrador dog;
     private VetMed veterinarian;
 
-    public Play(Adopter adopter, Dog dog, VetMed veterinarian)
+    public Play(Adopter adopter, Labrador dog, VetMed veterinarian)
     {
         this.adopter = adopter;
         this.dog = dog;
@@ -34,7 +35,7 @@ public class Play
         return dog;
     }
 
-    public void setDog(Dog dog)
+    public void setDog(Labrador dog)
     {
         this.dog = dog;
     }
@@ -56,12 +57,12 @@ public class Play
 
     public void fallInLove()
     {
-        System.out.println(this.adopter.fallInLove() + "a " + this.dog.getBreed() + ".");
+        System.out.print(this.adopter.fallInLove() + "a " + this.dog.getBreed() + ".");
     }
 
     public void animalCondition()
     {
-        System.out.println(this.dog+".");
+        System.out.print(this.dog+".");
     }
 
     public void nameAnimal()
@@ -80,18 +81,19 @@ public class Play
         {
             pov += this.dog.eat(df) + " and ";
         }
-        pov += " after a while the ";
+        pov += "after a while the ";
         System.out.print(pov);
     }
     public void goToVet()
     {
-        System.out.println(this.adopter.goToVet(this.dog) + " and the" + this.veterinarian.vaccineAndDeworm(this.dog));
-        System.out.println(this.veterinarian.getNurse().comfort(this.dog));
+        System.out.println();
+        System.out.print(this.adopter.goToVet(this.dog) + " and the " + this.veterinarian.vaccineAndDeworm(this.dog) + ". ");
+        System.out.println(this.veterinarian.getNurse().comfort(this.dog)+".");
     }
 
     public void gainWeight()
     {
-        DogFood df = new DogFood("wet", "beef", "adult");
+        DogFood df = new DogFood("wet", "beef", "adults");
         this.dog.setPreferredFood(df);
         this.dog.eat(df);
         this.dog.eat(df);
@@ -111,7 +113,7 @@ public class Play
     public void dailyRoutine()
     {
         System.out.print(this.adopter.getName() + " made a daily routine for the dog: ");
-        System.out.print("After waking up "+ this.adopter.feed(this.dog) + " with " + dog.getPreferredFood());
+        System.out.print("after waking up "+ this.adopter.feed(this.dog) + " with " + dog.getPreferredFood());
         System.out.print(this.adopter.walkAnimal(this.dog));
         System.out.print("Returning back, "  + this.adopter.doHomework() + " and " + this.dog.sleep()+ ". ");
         this.dog.setPreferredActivity("played with the ball in the garden");
@@ -122,7 +124,7 @@ public class Play
 
     public void theEnd()
     {
-        System.out.println("With this routine, the dog kept its wight in control");
+        System.out.println("With this routine, the dog kept its weight in control");
     }
 
 
