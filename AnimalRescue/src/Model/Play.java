@@ -124,7 +124,7 @@ public class Play
 
     public void theEnd()
     {
-        System.out.println("With this routine, the dog kept its weight in control");
+        System.out.println("With this routine, the dog kept its weight in control.");
     }
 
 
