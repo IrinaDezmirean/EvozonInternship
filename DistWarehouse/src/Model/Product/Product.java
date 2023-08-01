@@ -5,33 +5,35 @@ import Model.Category.ProductCategory;
 public class Product
 {
     private ProductCategory prodCat;
+    private String name;
     private String msUnit;
 
     private float priceUnit;
 
-    public Product(ProductCategory prodCat, String msUnit, float priceUnit)
+    public Product(ProductCategory prodCat, String name, String msUnit, float priceUnit)
     {
         this.prodCat = prodCat;
+        this.name = name;
         this.msUnit = msUnit;
         this.priceUnit = priceUnit;
     }
 
-    protected String getMsUnit()
+    public String getMsUnit()
     {
         return msUnit;
     }
 
-    protected void setMsUnit(String msUnit)
+    public void setMsUnit(String msUnit)
     {
         this.msUnit = msUnit;
     }
 
-    protected float getPriceUnit()
+    public float getPriceUnit()
     {
         return priceUnit;
     }
 
-    protected void setPriceUnit(float priceUnit)
+    public void setPriceUnit(float priceUnit)
     {
         this.priceUnit = priceUnit;
     }
@@ -46,11 +48,22 @@ public class Product
         this.prodCat = prodCat;
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
     @Override
     public String toString()
     {
         return "Product{" +
                 "prodCat=" + prodCat +
+                ", name='" + name + '\'' +
                 ", msUnit='" + msUnit + '\'' +
                 ", priceUnit=" + priceUnit +
                 '}';

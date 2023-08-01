@@ -2,21 +2,24 @@ package Model;
 
 import Model.Product.Product;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Package
 {
     private Product prodType;
 
-    private String msUnit;
+    private int msUnit;
 
-    private float priceUnit;
+    private LocalDate expDate;
 
     public Package(){}
 
-    public Package(Product prodType, String msUnit, float priceUnit)
+    public Package(Product prodType, int msUnit, LocalDate date)
     {
         this.prodType = prodType;
         this.msUnit = msUnit;
-        this.priceUnit = priceUnit;
+        this.expDate = date;
     }
 
     public Product getProdType()
@@ -29,24 +32,24 @@ public class Package
         this.prodType = prodType;
     }
 
-    public String getMsUnit()
+    public int getMsUnit()
     {
         return msUnit;
     }
 
-    public void setMsUnit(String msUnit)
+    public void setMsUnit(int msUnit)
     {
         this.msUnit = msUnit;
     }
 
-    public float getPriceUnit()
+    public LocalDate getExpDate()
     {
-        return priceUnit;
+        return expDate;
     }
 
-    public void setPriceUnit(float priceUnit)
+    public void setExpDate(LocalDate expDate)
     {
-        this.priceUnit = priceUnit;
+        this.expDate = expDate;
     }
 
     @Override
@@ -55,7 +58,7 @@ public class Package
         return "Package{" +
                 "prodType=" + prodType +
                 ", msUnit='" + msUnit + '\'' +
-                ", priceUnit=" + priceUnit +
+                ", expDate=" + expDate +
                 '}';
     }
 }
