@@ -7,7 +7,7 @@ import Model.Category.Vegetable;
 import Model.Package;
 import Model.Product.Product;
 
-import javax.swing.plaf.basic.BasicBorders;
+import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.LocalDate;
@@ -36,6 +36,7 @@ public class Warehouse
         this.vegetables = new ArrayList<>();
         this.others = new ArrayList<>();
         this.products = new ArrayList<>();
+        this.storagePackages = new ArrayList<>();
     }
 
     private List<String> readFile(String filename)
@@ -53,6 +54,8 @@ public class Warehouse
         }
         catch(Exception e)
         {
+            System.out.println("An error occurred while reading from the file " + filename);
+            e.printStackTrace();
 
         }
         return products;
@@ -60,8 +63,23 @@ public class Warehouse
 
     private void writeFile(String fileName)
     {
-
+        try
+        {
+            FileWriter myWriter = new FileWriter(fileName);
+            for(Package p: storagePackages)
+            {
+                myWriter.write(p.toString()+"\n");
+            }
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        }
+        catch (Exception e)
+        {
+            System.out.println("An error occurred while writing to the file " + fileName);
+            e.printStackTrace();
+        }
     }
+
 
     private ProductCategory getRandomCategory()
     {
@@ -154,11 +172,14 @@ public class Warehouse
             String msUnit = getRandomMsUnit();
             Float price = getRandomPrice();
 
+            System.out.println(category.getCatName());
+
             Product product = new Product(category,name,msUnit,price);
 
             Package pack = getRandomPackage(product);
-
-
+            storagePackages.add(pack);
         }
+
+        writeFile("Warehouse.txt");
     }
 }

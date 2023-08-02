@@ -7,7 +7,10 @@ public class Vegetable extends ProductCategory
     private String nutritionalQuality;
     private String producer;
 
-    public Vegetable(){}
+    public Vegetable()
+    {
+        super("vegetable");
+    }
 
     public Vegetable(String nutritionalQuality, String producer)
     {

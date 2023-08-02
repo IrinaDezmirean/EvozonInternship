@@ -6,7 +6,10 @@ public class Fruit extends ProductCategory
 {
     private String nutritionalQuality;
 
-    public Fruit(){}
+    public Fruit()
+    {
+        super("fruit");
+    }
 
     public Fruit(String nutritionalQuality)
     {

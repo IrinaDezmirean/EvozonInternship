@@ -55,10 +55,6 @@ public class Package
     @Override
     public String toString()
     {
-        return "Package{" +
-                "prodType=" + prodType +
-                ", msUnit='" + msUnit + '\'' +
-                ", expDate=" + expDate +
-                '}';
+        return prodType.getProdCat().getCatName() + " " + prodType.getName() + " "  + msUnit + " " + expDate;
     }
 }
