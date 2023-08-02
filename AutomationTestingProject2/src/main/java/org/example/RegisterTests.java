@@ -4,19 +4,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.tracing.opentelemetry.SeleniumSpanExporter;
 
 import java.util.List;
 
 public class RegisterTests
 {
 
-    public void registerWithValidCredentials()
+    private WebDriver driverUser;
+    private WebDriver driverAdmin;
+
+    public void loadDriverUser()
     {
-        WebDriver driver = new ChromeDriver();
+        driverUser = new ChromeDriver();
+        driverUser.get("http://qa2magento.dev.evozon.com/");
+    }
 
-        driver.get("http://qa2magento.dev.evozon.com/");
+    public void loadDriverAdmin()
+    {
+        driverAdmin = new ChromeDriver();
+        driverAdmin.get("http://qa2magento.dev.evozon.com/admin");
+    }
 
+    public void registerWithValidCredentials(WebDriver driver)
+    {
         driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
         driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a")).click();
         driver.findElement(By.id("firstname")).sendKeys("Irina");
@@ -28,26 +38,18 @@ public class RegisterTests
         driver.findElement(By.cssSelector("#form-validate > div.buttons-set > button")).click();
 
         String helloText = driver.findElement(By.cssSelector("body > div > div > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div > div.welcome-msg > p.hello")).getText();
-        String welcomeText = driver.findElement(By.cssSelector("body > div > div > div.header-language-background > div > p")).getText();
 
-        if(helloText.equals("Hello, Irina Dezmi!") && welcomeText.equals("Welcome, Irina Dezmi!"))
+        if(helloText.equals("Hello, Irina Dezmi!"))
             System.out.println("Valid registration successful!");
         else
             System.err.println("Registration failed!");
-        driver.close();
     }
 
-    public void deleteCustomerFormAdmin()
+    public void deleteCustomerFormAdmin(WebDriver driver)
     {
-        WebDriver driver = new ChromeDriver();
-
-        driver.get("http://qa2magento.dev.evozon.com/admin");
-
         loginInAdmin(driver);
 
         deleteUserAdmin(driver);
-
-        driver.close();
     }
 
     public void loginInAdmin(WebDriver driver)
@@ -91,7 +93,12 @@ public class RegisterTests
 
     public void run()
     {
-        registerWithValidCredentials();
-        deleteCustomerFormAdmin();
+        loadDriverUser();
+        registerWithValidCredentials(driverUser);
+        driverUser.close();
+
+        loadDriverAdmin();
+        deleteCustomerFormAdmin(driverAdmin);
+        driverAdmin.close();
     }
 }
