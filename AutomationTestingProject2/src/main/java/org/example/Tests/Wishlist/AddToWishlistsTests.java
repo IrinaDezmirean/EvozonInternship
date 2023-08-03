@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Tests.Wishlist;
 
 import org.checkerframework.checker.units.qual.A;
 import org.junit.*;

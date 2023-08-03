@@ -1,5 +1,7 @@
-package org.example;
+package org.example.Suites;
 
+import org.example.Tests.DeleteCustomer.DeleteUserFromAdminTests;
+import org.example.Tests.Register.RegisterTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 

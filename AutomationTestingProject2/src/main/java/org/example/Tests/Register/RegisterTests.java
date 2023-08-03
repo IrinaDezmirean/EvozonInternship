@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Tests.Register;
 
 import org.junit.AfterClass;
 import org.junit.Assert;

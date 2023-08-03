@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Tests.Wishlist;
 
 import org.junit.*;
 import org.junit.runner.RunWith;

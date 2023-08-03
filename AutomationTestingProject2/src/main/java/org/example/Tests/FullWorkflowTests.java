@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Tests;
 
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;

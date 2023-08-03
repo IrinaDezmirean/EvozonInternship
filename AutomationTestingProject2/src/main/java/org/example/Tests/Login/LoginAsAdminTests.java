@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Tests.Login;
 
 
 import org.junit.AfterClass;
