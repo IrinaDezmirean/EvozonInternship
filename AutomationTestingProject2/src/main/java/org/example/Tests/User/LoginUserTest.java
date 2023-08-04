@@ -1,7 +1,6 @@
-package org.example.Tests.Login;
+package org.example.Tests.User;
 
 import com.github.javafaker.Faker;
-import org.example.Tests.BaseTest;
 import org.example.Utils.Constants;
 import org.junit.Assert;
 import org.junit.Test;

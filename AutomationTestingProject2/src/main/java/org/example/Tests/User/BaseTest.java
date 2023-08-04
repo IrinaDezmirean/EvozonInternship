@@ -1,9 +1,6 @@
-package org.example.Tests;
+package org.example.Tests.User;
 
-import org.example.Pages.HomePage;
-import org.example.Pages.LoginPage;
-import org.example.Pages.MyAccountPage;
-import org.example.Pages.RegisterPage;
+import org.example.Pages.User.*;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.runner.RunWith;
@@ -21,6 +18,12 @@ public class BaseTest
 
     protected RegisterPage registerPage;
 
+    protected ProductsPage productsPage;
+
+    protected ProductDetailsPage productDetailsPage;
+
+    protected WishlistPage wishlistPage;
+
     @Before
     public void initDriver()
     {
@@ -31,6 +34,9 @@ public class BaseTest
         loginPage = new LoginPage(driver);
         registerPage = new RegisterPage(driver);
         accountPage = new MyAccountPage(driver);
+        productsPage = new ProductsPage(driver);
+        productDetailsPage = new ProductDetailsPage(driver);
+        wishlistPage = new WishlistPage(driver);
         homepage.open();
     }
 

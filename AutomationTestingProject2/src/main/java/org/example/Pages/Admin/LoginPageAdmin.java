@@ -1,6 +1,6 @@
 package org.example.Pages.Admin;
 
-import org.example.Pages.BasePage;
+import org.example.Pages.User.BasePage;
 import org.example.Utils.Constants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +16,9 @@ public class LoginPageAdmin extends BasePage
 
     @FindBy(css = "input[title=\"Login\"]")
     private WebElement loginButton;
+
+    @FindBy(css = ".login-form h2")
+    private WebElement loggedOutParagraph;
 
     public LoginPageAdmin(WebDriver driver)
     {
@@ -40,5 +43,10 @@ public class LoginPageAdmin extends BasePage
     public void clickLoginButton()
     {
         loginButton.click();
+    }
+
+    public String getLoggedOutMessage()
+    {
+        return loggedOutParagraph.getText();
     }
 }

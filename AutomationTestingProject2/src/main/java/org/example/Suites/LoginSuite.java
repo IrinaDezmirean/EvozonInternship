@@ -1,8 +1,8 @@
 package org.example.Suites;
 
-import org.example.Tests.DeleteCustomer.DeleteUserFromAdminTests;
-import org.example.Tests.Logout.LogoutUserTest;
-import org.example.Tests.Register.RegisterTests;
+import org.example.Tests.Admin.DeleteUserFromAdminTests;
+import org.example.Tests.User.LogoutUserTest;
+import org.example.Tests.User.RegisterTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 

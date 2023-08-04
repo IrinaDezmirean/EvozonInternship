@@ -1,4 +1,4 @@
-package org.example.Tests;
+package org.example.Tests.Admin;
 
 import org.example.Pages.Admin.EditCustomerPage;
 import org.example.Pages.Admin.HomePageAdmin;

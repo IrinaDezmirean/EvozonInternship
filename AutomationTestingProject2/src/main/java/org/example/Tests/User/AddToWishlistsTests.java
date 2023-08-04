@@ -1,58 +1,55 @@
-package org.example.Tests.Wishlist;
+package org.example.Tests.User;
 
 import org.checkerframework.checker.units.qual.A;
+import org.example.Utils.Constants;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.List;
+import java.util.Random;
+
 
 @RunWith(JUnit4.class)
-public class AddToWishlistsTests
+public class AddToWishlistsTests extends BaseTest
 {
-
-    private static  WebDriver driver;
-
-    @BeforeClass
-    public static void loadDriver()
-    {
-        driver = new ChromeDriver();
-        driver.get("http://qa2magento.dev.evozon.com/");
-    }
-
-
     @Before
-    public void loginWithValidCredentials()
+    public void navigateToProductsPage()
     {
-        driver.findElement(By.cssSelector(".skip-link.skip-account span.label")).click();
-        driver.findElement(By.cssSelector("a[title=\"Log In\"]")).click();
+        homepage.clickAccountLink();
+        homepage.clickLoginLink();
 
-        driver.findElement(By.id("email")).sendKeys("ana@maria.com");
-        driver.findElement(By.id("pass")).sendKeys("anaaremere");
+        loginPage.setEmailField(Constants.USER_EMAIL);
+        loginPage.setPasswordField(Constants.USER_PASSWORD);
+        loginPage.clickLoginButton();
 
-        driver.findElement(By.id("send2")).click();
+        homepage.clickFirstMenuLink();
+        homepage.clickFirstSubcategoryLink();
     }
 
     @Test
     public void addToWishlist()
     {
-        driver.findElement(By.cssSelector("a.level0.has-children")).click();
-        driver.findElement(By.cssSelector(".catblocks li:nth-child(2) a")).click();
+        List<WebElement> products = productsPage.getProducts();
+        Random random = new Random();
 
-        driver.findElement(By.cssSelector("body > div > div > div.main-container.col3-layout > div > div.col-wrapper > div.col-main > div.category-products > ul > li:nth-child(1) > div > div.actions > ul > li:nth-child(1) > a")).click();
+        WebElement randomProduct = products.get(random.nextInt(products.size()));
 
-        String txt = driver.findElement(By.cssSelector(".page-title.title-buttons h1")).getText();
+        randomProduct.click();
 
-        Assert.assertEquals(txt,"MY WISHLIST");
+        String name = productDetailsPage.getProductNameText().toLowerCase();
+
+        productDetailsPage.clickAddToWishlistLink();
+
+        String msg = wishlistPage.getWishlistSuccessMsg().toLowerCase();
+
+        Assert.assertTrue(msg.contains(name + " has been added to your wishlist"));
 
     }
 
-    @AfterClass
-    public static void closeDriver()
-    {
-        driver.close();
-    }
 }

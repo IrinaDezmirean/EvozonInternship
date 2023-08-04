@@ -1,6 +1,6 @@
 package org.example.Pages.Admin;
 
-import org.example.Pages.BasePage;
+import org.example.Pages.User.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

@@ -1,6 +1,5 @@
-package org.example.Tests.Register;
+package org.example.Tests.User;
 
-import org.example.Tests.BaseTest;
 import org.example.Utils.Constants;
 import org.junit.Assert;
 import org.junit.Test;

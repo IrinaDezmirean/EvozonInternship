@@ -1,4 +1,5 @@
-package org.example.Pages;
+package org.example.Pages.User;
+import org.example.Pages.User.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

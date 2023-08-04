@@ -1,6 +1,7 @@
-package org.example.Tests.Logout;
+package org.example.Tests.Admin;
 
 
+import org.example.Utils.Constants;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -9,40 +10,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(JUnit4.class)
-public class LogoutAdminTests {
-    private static WebDriver driverAdmin;
-
-    @BeforeClass
-    public static void loadDriver()
-    {
-        driverAdmin = new ChromeDriver();
-        driverAdmin.get("http://qa2magento.dev.evozon.com/admin");
-    }
-
+public class LogoutAdminTests extends BaseTestAdmin
+{
     @Before
-    public void loginInAdmin()
+    public void logInAdmin()
     {
-        driverAdmin.findElement(By.id("username")).sendKeys("testuser");
-        driverAdmin.findElement(By.id("login")).sendKeys("password123");
-        driverAdmin.findElement(By.cssSelector("input[title=\"Login\"]")).click();
-    }
+        loginPageAdmin.setUsernameField(Constants.USER_NAME_ADMIN);
+        loginPageAdmin.setPasswordField(Constants.ADMIN_PASSWORD);
+        loginPageAdmin.clickLoginButton();
 
+        homePageAdmin.clickPopupCloseButton();
+    }
 
     @Test
     public void logoutAdmin()
     {
-        driverAdmin.findElement(By.cssSelector(".link-logout")).click();
-
-        String txt  = driverAdmin.findElement(By.cssSelector(".login-form h2")).getText();
-
-        Assert.assertEquals(txt,"Log in to Admin Panel");
+        homePageAdmin.clickLogoutLink();
+        Assert.assertEquals("Log in to Admin Panel", loginPageAdmin.getLoggedOutMessage());
 
     }
-
-    @AfterClass
-    public static void closeDriver()
-    {
-        driverAdmin.close();
-    }
-
 }

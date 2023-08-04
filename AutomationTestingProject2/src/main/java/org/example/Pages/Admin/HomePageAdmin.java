@@ -1,9 +1,11 @@
 package org.example.Pages.Admin;
 
-import org.example.Pages.BasePage;
+import org.example.Pages.User.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 public class HomePageAdmin extends BasePage
 {
@@ -18,6 +20,9 @@ public class HomePageAdmin extends BasePage
 
     @FindBy(css = ".parent.level0:nth-child(4) .level1:first-child a")
     private WebElement manageCustomersLink;
+
+    @FindBy(css = ".link-logout")
+    private WebElement logoutLink;
 
     public HomePageAdmin(WebDriver driver)
     {
@@ -43,4 +48,10 @@ public class HomePageAdmin extends BasePage
     {
         manageCustomersLink.click();
     }
+
+    public void clickLogoutLink()
+    {
+        logoutLink.click();
+    }
+
 }

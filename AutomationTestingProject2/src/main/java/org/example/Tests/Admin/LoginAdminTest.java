@@ -1,6 +1,5 @@
-package org.example.Tests.Login;
+package org.example.Tests.Admin;
 
-import org.example.Tests.BaseTestAdmin;
 import org.example.Utils.Constants;
 import org.junit.Assert;
 import org.junit.Test;
