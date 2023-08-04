@@ -40,6 +40,7 @@ public class CheckoutTests
     @Test
     public void proceedToCheckoutShipToDifferentAddress()
     {
+        //TO DO: recheck this some steps are wrong
         driver.findElement(By.cssSelector(".header-minicart a[data-target-element]")).click();
         driver.findElement(By.cssSelector("a.button[title=\"Checkout\"]")).click();
         driver.findElement(By.cssSelector("label[for=\"billing:use_for_shipping_no\"]")).click();
