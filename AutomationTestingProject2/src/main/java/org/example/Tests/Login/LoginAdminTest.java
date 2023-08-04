@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(JUnit4.class)
-public class LoginAsAdminTests
+public class LoginAdminTest
 {
     private static WebDriver driverAdmin;
 

@@ -1,2 +1,5 @@
-package org.example.Pages.Admin;public class LoginPage {
+package org.example.Pages.Admin;
+
+public class LoginPage
+{
 }

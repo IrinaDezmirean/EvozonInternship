@@ -1,50 +1,44 @@
 package org.example.Tests.Login;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import com.github.javafaker.Faker;
+import org.example.Tests.BaseTest;
+import org.example.Utils.Constants;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(JUnit4.class)
-public class LoginAsUserTests
+public class LoginUserTest extends BaseTest
 {
-
-    private static WebDriver driver;
-
-    @BeforeClass
-    public static void loadDriver()
-    {
-        driver = new ChromeDriver();
-        driver.get("http://qa2magento.dev.evozon.com/");
-    }
-
 
     @Test
     public void loginWithValidCredentials()
     {
-        driver.findElement(By.cssSelector(".skip-link.skip-account span.label")).click();
-        driver.findElement(By.cssSelector("a[title=\"Log In\"]")).click();
+        homepage.clickAccountLink();
+        homepage.clickLoginLink();
 
-        driver.findElement(By.id("email")).sendKeys("ii.dd@yahoo.com");
-        driver.findElement(By.id("pass")).sendKeys("12341234");
+        loginPage.setEmailField(Constants.USER_EMAIL);
+        loginPage.setPasswordField(Constants.USER_PASSWORD);
+        loginPage.clickLoginButton();
 
-        driver.findElement(By.id("send2")).click();
-
-        String helloText = driver.findElement(By.cssSelector(".hello")).getText();
-
-        if(helloText.equals("Hello, Irina Dezmi!"))
-            System.out.println("Valid login successful!");
-        else
-            System.err.println("Login failed!");
+        Assert.assertEquals("Hello, "+Constants.USER_NAME+"!", accountPage.getWelcomeText());
     }
 
-    @AfterClass
-    public static void closeDriver()
+
+    @Test
+    public void loginUnregisteredCredentials()
     {
-        driver.close();
+        homepage.clickAccountLink();
+        homepage.clickLoginLink();
+        Faker faker = new Faker();
+
+        loginPage.setEmailField(faker.internet().emailAddress());
+        loginPage.setPasswordField(faker.internet().password());
+        loginPage.clickLoginButton();
+
+        String actual = loginPage.getErrorMessage();
+        Assert.assertEquals("Invalid login or password.",actual);
     }
+
 }

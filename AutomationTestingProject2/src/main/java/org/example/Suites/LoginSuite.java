@@ -10,6 +10,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         RegisterTests.class,
         LogoutUserTest.class,
+        LoginSuite.class,
         DeleteUserFromAdminTests.class
 })
 public class LoginSuite
