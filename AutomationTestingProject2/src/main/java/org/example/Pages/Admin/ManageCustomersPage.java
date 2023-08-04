@@ -1,2 +1,24 @@
-package org.example.Pages.Admin;public class ManageCustomersPage {
+package org.example.Pages.Admin;
+
+import org.example.Pages.BasePage;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+
+public class ManageCustomersPage extends BasePage
+{
+    @FindBy(css = "#customerGrid_table tbody tr")
+    private List<WebElement> customersTableRows;
+
+    public ManageCustomersPage(WebDriver driver)
+    {
+        super(driver);
+    }
+
+    public List<WebElement> getAllCustomers()
+    {
+        return customersTableRows;
+    }
 }

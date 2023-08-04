@@ -1,9 +1,8 @@
 package org.example.Tests.DeleteCustomer;
 
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.example.Tests.BaseTestAdmin;
+import org.example.Utils.Constants;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.openqa.selenium.By;
@@ -13,42 +12,43 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 @RunWith(JUnit4.class)
-public class DeleteUserFromAdminTests
+public class DeleteUserFromAdminTests extends BaseTestAdmin
 {
-    private static WebDriver driverAdmin;
-
-    @BeforeClass
-    public static void loadDriverAdmin()
-    {
-        driverAdmin = new ChromeDriver();
-        driverAdmin.get("http://qa2magento.dev.evozon.com/admin");
-    }
-
     @Before
-    public void loginInAdmin()
+    public void navigateToManageCustomersPage()
     {
-        driverAdmin.findElement(By.id("username")).sendKeys("testuser");
-        driverAdmin.findElement(By.id("login")).sendKeys("password123");
-        driverAdmin.findElement(By.cssSelector("input[title=\"Login\"]")).click();
+        loginPageAdmin.setUsernameField(Constants.USER_NAME_ADMIN);
+        loginPageAdmin.setPasswordField(Constants.ADMIN_PASSWORD);
+        loginPageAdmin.clickLoginButton();
+
+        homePageAdmin.clickPopupCloseButton();
+
+        homePageAdmin.clickCustomersDropdown();
+
+        homePageAdmin.clickManageCustomersLink();
     }
 
 
     @Test
     public void deleteUserAdmin()
     {
-        driverAdmin.findElement(By.cssSelector("a[title=\"close\"]")).click();
-        driverAdmin.findElement(By.cssSelector("#nav .parent.level0:nth-child(4)")).click();
-        driverAdmin.findElement(By.cssSelector("#nav .parent.level0:nth-child(4) .level1:first-child")).click();
-
-        List<WebElement> users = driverAdmin.findElements(By.cssSelector("#customerGrid_table tbody tr"));
+        List<WebElement> users  = manageCustomersPage.getAllCustomers();
+        WebElement wantedUser;
 
         for(WebElement user: users)
         {
 
             String txt = user.getText();
-            if(txt.contains("Irina Dezmi"))
+            if(txt.contains(Constants.USER_NAME))
             {
+                wantedUser = user;
                 user.click();
+
+                editCustomerPage.clickDeleteCustomerButton();
+                driver.switchTo().alert().accept();
+
+                List<WebElement> usersUpdated = manageCustomersPage.getAllCustomers();
+                Assert.assertFalse(usersUpdated.contains(wantedUser));
                 break;
             }
             else
@@ -56,14 +56,5 @@ public class DeleteUserFromAdminTests
                 System.out.println("else");
             }
         }
-        driverAdmin.findElement(By.cssSelector("[title=\"Delete Customer\"]")).click();
-        driverAdmin.switchTo().alert().accept();
-    }
-
-
-    @AfterClass
-    public static void closeDriver()
-    {
-        driverAdmin.close();
     }
 }

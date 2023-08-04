@@ -22,7 +22,8 @@ public class BaseTest
     protected RegisterPage registerPage;
 
     @Before
-    public void initDriver() {
+    public void initDriver()
+    {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();

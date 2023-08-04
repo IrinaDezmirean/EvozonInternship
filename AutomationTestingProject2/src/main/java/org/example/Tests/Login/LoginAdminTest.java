@@ -1,44 +1,28 @@
 package org.example.Tests.Login;
 
-
-import org.junit.AfterClass;
+import org.example.Tests.BaseTestAdmin;
+import org.example.Utils.Constants;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(JUnit4.class)
-public class LoginAdminTest
+public class LoginAdminTest extends BaseTestAdmin
 {
-    private static WebDriver driverAdmin;
-
-    @BeforeClass
-    public static void loadDriverAdmin()
-    {
-        driverAdmin = new ChromeDriver();
-        driverAdmin.get("http://qa2magento.dev.evozon.com/admin");
-    }
 
     @Test
     public void loginInAdmin()
     {
-        driverAdmin.findElement(By.id("username")).sendKeys("testuser");
-        driverAdmin.findElement(By.id("login")).sendKeys("password123");
-        driverAdmin.findElement(By.cssSelector("input[title=\"Login\"]")).click();
+        loginPageAdmin.setUsernameField(Constants.USER_NAME_ADMIN);
+        loginPageAdmin.setPasswordField(Constants.ADMIN_PASSWORD);
+        loginPageAdmin.clickLoginButton();
 
-        String txt = driverAdmin.findElement(By.cssSelector(".logo")).getText();
+        homePageAdmin.clickPopupCloseButton();
 
-        Assert.assertEquals(txt,"Magento Logo");
+        String logoTxt = homePageAdmin.getLogoText();
+
+        Assert.assertEquals("Magento Logo",logoTxt);
     }
 
-
-    @AfterClass
-    public static void closeDriver()
-    {
-        driverAdmin.close();
-    }
 }
