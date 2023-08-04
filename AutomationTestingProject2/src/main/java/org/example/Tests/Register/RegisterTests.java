@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 @RunWith(JUnit4.class)
 public class RegisterTests
 {
-    private static WebDriver driverUser;
+    private static WebDriver driverUser; ///mdofificare ca sa fac commit
 
     @BeforeClass
     public static void loadDriverUser()
