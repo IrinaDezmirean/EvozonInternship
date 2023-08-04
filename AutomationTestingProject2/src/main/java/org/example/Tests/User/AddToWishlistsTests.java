@@ -1,16 +1,11 @@
 package org.example.Tests.User;
 
-import org.checkerframework.checker.units.qual.A;
+
 import org.example.Utils.Constants;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-
 import java.util.List;
 import java.util.Random;
 

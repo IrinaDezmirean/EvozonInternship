@@ -24,6 +24,8 @@ public class BaseTest
 
     protected WishlistPage wishlistPage;
 
+    protected ShoppingCartPage shoppingCartPage;
+
     @Before
     public void initDriver()
     {
@@ -37,6 +39,7 @@ public class BaseTest
         productsPage = new ProductsPage(driver);
         productDetailsPage = new ProductDetailsPage(driver);
         wishlistPage = new WishlistPage(driver);
+        shoppingCartPage = new ShoppingCartPage(driver);
         homepage.open();
     }
 

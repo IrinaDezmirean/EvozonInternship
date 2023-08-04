@@ -1,24 +1,21 @@
 package org.example.Tests.User;
 
+import org.example.Utils.Constants;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+import java.util.Random;
 
 
 @RunWith(JUnit4.class)
-public class AddToCartTests
+public class AddToCartTests extends BaseTest
 {
-    private static WebDriver driver;
-
-    @BeforeClass
-    public static void loadDriver()
-    {
-        driver = new ChromeDriver();
-        driver.get("http://qa2magento.dev.evozon.com/");
-    }
 
 //    public void changeQuantity(WebDriver driver)
 //    {
@@ -32,49 +29,48 @@ public class AddToCartTests
 //    }
 
     @Before
-    public void loginWithValidCredentials()
+    public void navigateToProductsPage()
     {
-        driver.findElement(By.cssSelector(".skip-link.skip-account span.label")).click();
-        driver.findElement(By.cssSelector("a[title=\"Log In\"]")).click();
+        homepage.clickAccountLink();
+        homepage.clickLoginLink();
 
-        driver.findElement(By.id("email")).sendKeys("ana@maria.com");
-        driver.findElement(By.id("pass")).sendKeys("anaaremere");
+        loginPage.setEmailField(Constants.USER_EMAIL);
+        loginPage.setPasswordField(Constants.USER_PASSWORD);
+        loginPage.clickLoginButton();
 
-        driver.findElement(By.id("send2")).click();
+        homepage.clickFirstMenuLink();
+        homepage.clickFirstSubcategoryLink();
     }
+
+
 
     @Test
     public void addToCart()
     {
 
-        driver.findElement(By.cssSelector("#nav > ol > li.level0.nav-3.parent > a")).click();
-        driver.findElement(By.cssSelector("body > div > div > div.main-container.col1-layout > div > div.col-main > ul > li:nth-child(1) > a > span")).click();
-        driver.findElement(By.cssSelector("body > div > div > div.main-container.col3-layout > div > div.col-wrapper > div.col-main > div.category-products > ul > li:nth-child(1) > a")).click();
-        driver.findElement(By.cssSelector("#product_addtocart_form > div.add-to-cart-wrapper > div > div > div.add-to-cart-buttons > button")).click();
+        List<WebElement> products = productsPage.getProducts();
 
-        String txt = driver.findElement(By.cssSelector(".success-msg span")).getText();
+        Random random = new Random();
 
-        Assert.assertTrue(txt.contains("was added to your shopping cart."));
+        WebElement randomProduct = products.get(random.nextInt(products.size()));
 
-    }
+        randomProduct.click();
 
-//    public void proceedToCheckout(WebDriver driver)
-//    {
-//        driver.findElement(By.cssSelector("body > div > div > div.main-container.col1-layout > div > div > div.cart.display-single-price > div.cart-totals-wrapper > div > ul > li > button"));
-//        if(driver.findElement(By.cssSelector("#opc-billing > div.step-title > h2")).getText().equals("Billing Information"))
-//        {
-//            System.out.println("Billing info section");
-//        }
-//        else
-//        {
-//            System.out.println("Proceed to checkout failed");
-//        }
-//
-//    }
+        String name = productDetailsPage.getProductNameText().toLowerCase();
 
-    @AfterClass
-    public static void closeDriver()
-    {
-        driver.close();
+        List<WebElement> colors = productDetailsPage.getColorsLink();
+        WebElement randColor = colors.get(random.nextInt(colors.size()));
+        randColor.click();
+
+        List<WebElement> sizes = productDetailsPage.getSizesLink();
+        WebElement randSize = sizes.get(random.nextInt(sizes.size()));
+        randSize.click();
+
+        productDetailsPage.clickAddToCart();
+
+        String msg = shoppingCartPage.getAddToCartMsg().toLowerCase();
+
+        Assert.assertEquals(name + " was added to your shopping cart.", msg);
+
     }
 }
