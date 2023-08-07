@@ -1,4 +1,4 @@
-package org.example.Tests.Checkout;
+package org.example.Tests.User;
 
 import org.junit.*;
 import org.junit.runner.RunWith;
